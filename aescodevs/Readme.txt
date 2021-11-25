@@ -1,4 +1,4 @@
-AESCrypt File Format Description
+File Format Description
 
 Items in quotes are a literal string.  Words outside of quotes
 are a textual description of the contents.  Fixed-valued octets are
