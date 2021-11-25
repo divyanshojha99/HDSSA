@@ -4,7 +4,7 @@ Items in quotes are a literal string.  Words outside of quotes
 are a textual description of the contents.  Fixed-valued octets are
 written in hexidecimal form (e.g., 0x01).
 
-The AESCrypt version 2 file format is as follows.
+The HDSSA EN/DE file format is as follows.
       3 Octets - 'AES'
       1 Octet  - 0x02 (Version)
       1 Octet  - Reserved
