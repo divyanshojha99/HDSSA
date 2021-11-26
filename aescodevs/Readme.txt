@@ -1,7 +1,7 @@
 Console FILE commands--
 
 #FOR ENCRYPTION---hdssa -e <file name with perfect extension>
-#FOR DECRYPTION-- hdssa -d <file name with perfect extension including .aes>
+#FOR DECRYPTION---hdssa -d <file name with perfect extension including .aes>
 
 File Format Description--
 
