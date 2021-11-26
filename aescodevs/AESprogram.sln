@@ -1,5 +1,5 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
+Microsoft Visual Studio Solution File
 # Visual Studio 2019
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AESCrypt", "AESCrypt\AESCrypt.vcxproj", "{590843D1-840A-4653-8670-37770D9A356C}"
 EndProject
