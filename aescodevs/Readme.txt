@@ -1,4 +1,9 @@
-File Format Description
+Console FILE commands--
+
+#FOR ENCRYPTION--- hdssa -e <file name with perfect extension>
+#FOR DECRYPTION-- hdssa -e <file name with perfect extension including .aes>
+
+File Format Description--
 
 Items in quotes are a literal string.  Words outside of quotes
 are a textual description of the contents.  Fixed-valued octets are
