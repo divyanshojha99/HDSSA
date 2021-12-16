@@ -1,14 +1,4 @@
-/*
- *  AESCryptWorkerThreads.cpp
- *
- *  Copyright (C) 2006, 2007, 2008, 2013, 2015
- *  Paul E. Jones <paulej@packetizer.com>
- *  All Rights Reserved.
- *
- *  This module implements the AESCryptWorkerThreads class, which is
- *  responsible for all background encryption and decryption functions.
- *
- */
+
 
 #include "stdafx.h"
 #include "AESCryptWorkerThreads.h"
