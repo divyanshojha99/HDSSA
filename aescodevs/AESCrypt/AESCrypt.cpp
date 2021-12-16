@@ -1,14 +1,5 @@
 /*
- *  AESCrypt.cpp
- *
- *  Copyright (C) 2006, 2007, 2008, 2013
- *  Paul E. Jones <paulej@packetizer.com>
- *  All Rights Reserved.
- *
- *  This module contains the main entry points for the DLL that are
- *  called by the Windows shell (Explorer) and by the AESCrypt32.exe
- *  program.
- *
+ HDSSA
  */
 
 
