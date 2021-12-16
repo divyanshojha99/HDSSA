@@ -1,13 +1,4 @@
-/*
- *  AESCryptShellExt.h
- *
- *  Copyright (C) 2006, 2008, 2013
- *  Paul E. Jones <paulej@packetizer.com>
- *  All Rights Reserved.
- *
- *  This defines the C++ class for integrating with the Windows shell.
- *
- */
+
 
 #pragma once
 #include "resource.h"       // main symbols
