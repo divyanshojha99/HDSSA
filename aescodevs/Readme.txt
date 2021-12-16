@@ -26,10 +26,7 @@ The HDSSA EN/DE file format is as follows.
                  documented on the standard extensions page, either
                  of which is terminated by a single 0x00 octet.  All
                  extension identifiers are case sensitive.
-                   Examples of URIs:
-                      http://www.aescrypt.com/extensions/creator/
-                      urn:oid:1.3.6.1.4.1.17090.55.14
-                      urn:uuid:85519EA3-1DA6-45b9-9041-8CD368D8C086
+            
                    Note:
                       A URI was used to allow anybody to define extension
                       types, though we should strive to define a standard
@@ -65,32 +62,4 @@ The HDSSA EN/DE file format is as follows.
      32 Octets - HMAC
 
      Thus, the footprint of the file is at least 136 octets.
-
-The AESCrypt version 1 file format is as follows.
-      3 Octets - 'AES'
-      1 Octet  - 0x01 (Version)
-      1 Octet  - Reserved
-     16 Octets - Initialization Vector (IV) used for encrypting the
-                 IV and symmetric key that is actually used to encrypt
-                 the bulk of the plaintext file.
-     48 Octets - Encrypted IV and 256-bit AES key used to encrypt the
-                 bulk of the file
-                 16 octets - Initialization Vector
-                 32 octets - encryption key
-     32 Octets - HMAC
-     nn Octets - Encrypted message (2^64 octets max)
-      1 Octet  - File size modulo 16 in least significant bit positions
-     32 Octets - HMAC
-
-     Thus, the footprint of the file is at least 134 octets.
-
-The AESCrypt version 0 file format is as follows.
-      3 Octets - 'AES'
-      1 Octet  - 0x00 (Version)
-      1 Octet  - File size modulo 16 in least significant bit positions
-     16 Octets - Initialization Vector (IV)
-     nn Octets - Encrypted message (2^64 octets max)
-     32 Octets - HMAC
-
-     Thus, the footprint of the file is at least 53 octets.
 
