@@ -1,5 +1,5 @@
-#ifndef _SHA256_H
-#define _SHA256_H
+#ifndef _SHA128_H
+#define _SHA128_H
 
 #ifndef uint8
 #define uint8  unsigned char
@@ -15,10 +15,10 @@ typedef struct
     uint32 state[8];
     uint8 buffer[64];
 }
-sha256_context;
+sha128_context;
 
-void sha256_starts( sha256_context *ctx );
-void sha256_update( sha256_context *ctx, uint8 *input, uint32 length );
-void sha256_finish( sha256_context *ctx, uint8 digest[32] );
+void sha128_starts( sha128_context *ctx );
+void sha128_update( sha128_context *ctx, uint8 *input, uint32 length );
+void sha128_finish( sha128_context *ctx, uint8 digest[32] );
 
-#endif /* sha256.h */
+#endif /* sha128.h */
