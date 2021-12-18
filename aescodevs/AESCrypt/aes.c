@@ -17,19 +17,19 @@
 
 /* forward S-box & tables */
 
-uint32 FSb[256];
-uint32 FT0[256]; 
-uint32 FT1[256]; 
-uint32 FT2[256]; 
-uint32 FT3[256]; 
+uint32 FSb[128];
+uint32 FT0[128]; 
+uint32 FT1[128]; 
+uint32 FT2[128]; 
+uint32 FT3[128]; 
 
 /* reverse S-box & tables */
 
-uint32 RSb[256];
-uint32 RT0[256];
-uint32 RT1[256];
-uint32 RT2[256];
-uint32 RT3[256];
+uint32 RSb[128];
+uint32 RT0[128];
+uint32 RT1[128];
+uint32 RT2[128];
+uint32 RT3[128];
 
 /* round constants */
 
@@ -51,12 +51,12 @@ void aes_gen_tables( void )
 {
     int i;
     uint8 x, y;
-    uint8 pow[256];
-    uint8 log[256];
+    uint8 pow[128];
+    uint8 log[128];
 
     /* compute pow and log tables over GF(2^8) */
 
-    for( i = 0, x = 1; i < 256; i++, x ^= XTIME( x ) )
+    for( i = 0, x = 1; i < 128; i++, x ^= XTIME( x ) )
     {
         pow[i] = x;
         log[x] = i;
@@ -74,7 +74,7 @@ void aes_gen_tables( void )
     FSb[0x00] = 0x63;
     RSb[0x63] = 0x00;
 
-    for( i = 1; i < 256; i++ )
+    for( i = 1; i < 128; i++ )
     {
         x = pow[255 - log[i]];
 
@@ -90,7 +90,7 @@ void aes_gen_tables( void )
 
     /* generate the forward and reverse tables */
 
-    for( i = 0; i < 256; i++ )
+    for( i = 0; i < 128; i++ )
     {
         x = (unsigned char) FSb[i]; y = XTIME( x );
 
@@ -124,7 +124,7 @@ void aes_gen_tables( void )
 
 /* forward S-box */
 
-static const uint32 FSb[256] =
+static const uint32 FSb[128] =
 {
     0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B, 0x6F, 0xC5,
     0x30, 0x01, 0x67, 0x2B, 0xFE, 0xD7, 0xAB, 0x76,
@@ -230,26 +230,26 @@ static const uint32 FSb[256] =
     V(7B,B0,B0,CB), V(A8,54,54,FC), V(6D,BB,BB,D6), V(2C,16,16,3A)
 
 #define V(a,b,c,d) 0x##a##b##c##d
-static const uint32 FT0[256] = { FT };
+static const uint32 FT0[128] = { FT };
 #undef V
 
 #define V(a,b,c,d) 0x##d##a##b##c
-static const uint32 FT1[256] = { FT };
+static const uint32 FT1[128] = { FT };
 #undef V
 
 #define V(a,b,c,d) 0x##c##d##a##b
-static const uint32 FT2[256] = { FT };
+static const uint32 FT2[128] = { FT };
 #undef V
 
 #define V(a,b,c,d) 0x##b##c##d##a
-static const uint32 FT3[256] = { FT };
+static const uint32 FT3[128] = { FT };
 #undef V
 
 #undef FT
 
 /* reverse S-box */
 
-static const uint32 RSb[256] =
+static const uint32 RSb[128] =
 {
     0x52, 0x09, 0x6A, 0xD5, 0x30, 0x36, 0xA5, 0x38,
     0xBF, 0x40, 0xA3, 0x9E, 0x81, 0xF3, 0xD7, 0xFB,
@@ -355,19 +355,19 @@ static const uint32 RSb[256] =
     V(7B,CB,84,61), V(D5,32,B6,70), V(48,6C,5C,74), V(D0,B8,57,42)
 
 #define V(a,b,c,d) 0x##a##b##c##d
-static const uint32 RT0[256] = { RT };
+static const uint32 RT0[128] = { RT };
 #undef V
 
 #define V(a,b,c,d) 0x##d##a##b##c
-static const uint32 RT1[256] = { RT };
+static const uint32 RT1[128] = { RT };
 #undef V
 
 #define V(a,b,c,d) 0x##c##d##a##b
-static const uint32 RT2[256] = { RT };
+static const uint32 RT2[128] = { RT };
 #undef V
 
 #define V(a,b,c,d) 0x##b##c##d##a
-static const uint32 RT3[256] = { RT };
+static const uint32 RT3[128] = { RT };
 #undef V
 
 #undef RT
@@ -411,10 +411,10 @@ void aes_gen_tables( void )
 
 int KT_init = 1;
 
-uint32 KT0[256];
-uint32 KT1[256];
-uint32 KT2[256];
-uint32 KT3[256];
+uint32 KT0[128];
+uint32 KT1[128];
+uint32 KT2[128];
+uint32 KT3[128];
 
 /* AES key scheduling routine */
 
@@ -434,7 +434,7 @@ int aes_set_key( aes_context *ctx, uint8 *key, int nbits )
     {
         case 128: ctx->nr = 10; break;
         case 192: ctx->nr = 12; break;
-        case 256: ctx->nr = 14; break;
+        case 128: ctx->nr = 14; break;
         default : return( 1 );
     }
 
@@ -483,7 +483,7 @@ int aes_set_key( aes_context *ctx, uint8 *key, int nbits )
         }
         break;
 
-    case 256:
+    case 128:
 
         for( i = 0; i < 7; i++, RK += 8 )
         {
@@ -514,7 +514,7 @@ int aes_set_key( aes_context *ctx, uint8 *key, int nbits )
 
     if( KT_init )
     {
-        for( i = 0; i < 256; i++ )
+        for( i = 0; i < 128; i++ )
         {
             KT0[i] = RT0[ FSb[i] ];
             KT1[i] = RT1[ FSb[i] ];
@@ -846,3 +846,6 @@ int main( void )
 
 #endif
 
+
+
+	
