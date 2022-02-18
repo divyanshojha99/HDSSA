@@ -1,9 +1,0 @@
-; AESCrypt.def : Declares the module parameters.
-
-LIBRARY      "AESCrypt.DLL"
-
-EXPORTS
-	DllCanUnloadNow		PRIVATE
-	DllGetClassObject	PRIVATE
-	DllRegisterServer	PRIVATE
-	DllUnregisterServer	PRIVATE
